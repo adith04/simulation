@@ -4,8 +4,8 @@
     <include>
       <uri>model://iris_base</uri>
     </include>
-
-    <link name="cam_link">
+    <!--ALL CAMERA LINKS-->
+    <link name="cam_link_front">
       <pose>0 0 -0.02 0 0 0 </pose>
       <inertial>
         <mass>0.01</mass>
@@ -23,8 +23,8 @@
             </cylinder>
           </geometry>
         </collision> -->
-      <visual name='cam_link'>
-    	<pose>0 0 0.15 0 1.5707 0</pose>
+      <visual name='cam_link_front'>
+    	<pose>0.1 0 0.5 0 1.1414 0</pose>
     	<geometry>
     		<cylinder>
     			<radius>.005</radius>
@@ -32,13 +32,13 @@
     		</cylinder>
     	</geometry>
     </visual>
-    <sensor name="cam" type="camera" >
-      <pose>0 0 0.15 0 0 0</pose>
+    <sensor name="cam_front" type="camera" >
+      <pose>0.1 0 0.5 0 -0.4293 0</pose>
       <camera>
-        <horizontal_fov>1.2</horizontal_fov>
+        <horizontal_fov>2.5</horizontal_fov>
         <image>
-          <width>640</width>
-          <height>480</height>
+          <width>1000</width>
+          <height>750</height>
         </image>
         <clip>
           <near>0.1</near>
@@ -48,18 +48,255 @@
       <always_on>1</always_on>
       <update_rate>30</update_rate>
       <visualize>true</visualize>
-      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <plugin name="camera_controller_front" filename="libgazebo_ros_camera.so">
         <always_on>true</always_on>
         <update_rate>30</update_rate>
-        <cameraName>webcam</cameraName>
-        <imageTopicName>image_raw</imageTopicName>
-        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>camera_link</frameName>
+        <cameraName>webcam_front</cameraName>
+        <imageTopicName>image_raw_front</imageTopicName>
+        <cameraInfoTopicName>camera_info_front</cameraInfoTopicName>
+        <frameName>camera_link_front</frameName>
       </plugin>
     </sensor>
     </link>
-    <joint name="camera_mount" type="fixed">
-      <child>cam_link</child>
+
+    <link name="cam_link_right_front">
+      <pose>0 0 -0.02 0 0 0</pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <iyy>0.001</iyy>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.005</radius>
+              <length>.018</length>
+            </cylinder>
+          </geometry>
+        </collision> -->
+      <visual name='cam_link_right_front'>
+    	<pose>0.1 0 0.5 0 1.1414 -0.5</pose>
+    	<geometry>
+    		<cylinder>
+    			<radius>.005</radius>
+    			<length>.018</length>
+    		</cylinder>
+    	</geometry>
+    </visual>
+    <sensor name="cam_right_front" type="camera" >
+      <pose>0.1 0 0.5 0 -0.4293 -0.5</pose>
+      <camera>
+        <horizontal_fov>1.5</horizontal_fov>
+        <image>
+          <width>1000</width>
+          <height>750</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>1000</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <plugin name="camera_controller_right_front" filename="libgazebo_ros_camera.so">
+        <always_on>true</always_on>
+        <update_rate>30</update_rate>
+        <cameraName>webcam_right_front</cameraName>
+        <imageTopicName>image_raw_right_front</imageTopicName>
+        <cameraInfoTopicName>camera_info_right_front</cameraInfoTopicName>
+        <frameName>camera_link_right_front</frameName>
+      </plugin>
+    </sensor>
+    </link>
+
+    <link name="cam_link_left_front">
+      <pose>0 0 -0.02 0 0 0 </pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <iyy>0.001</iyy>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.005</radius>
+              <length>.018</length>
+            </cylinder>
+          </geometry>
+        </collision> -->
+      <visual name='cam_link_left_front'>
+    	<pose>0.1 0 0.5 0 1.1414 0.5</pose>
+    	<geometry>
+    		<cylinder>
+    			<radius>.005</radius>
+    			<length>.018</length>
+    		</cylinder>
+    	</geometry>
+    </visual>
+    <sensor name="cam_left_front" type="camera" >
+      <pose>0.1 0 0.5 0 -0.4293 0.5</pose>
+      <camera>
+        <horizontal_fov>1.5</horizontal_fov>
+        <image>
+          <width>1000</width>
+          <height>750</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>1000</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <plugin name="camera_controller_left_front" filename="libgazebo_ros_camera.so">
+        <always_on>true</always_on>
+        <update_rate>30</update_rate>
+        <cameraName>webcam_left_front</cameraName>
+        <imageTopicName>image_raw_left_front</imageTopicName>
+        <cameraInfoTopicName>camera_info_left_front</cameraInfoTopicName>
+        <frameName>camera_link_left_front</frameName>
+      </plugin>
+    </sensor>
+    </link>
+
+    <link name="cam_link_up">
+      <pose>0 0 -0.02 0 0 0 </pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <iyy>0.001</iyy>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.005</radius>
+              <length>.018</length>
+            </cylinder>
+          </geometry>
+        </collision> -->
+      <visual name='cam_link_up'>
+    	<pose>0.1 0 0.5 0 0.9 0</pose>
+    	<geometry>
+    		<cylinder>
+    			<radius>.005</radius>
+    			<length>.018</length>
+    		</cylinder>
+    	</geometry>
+    </visual>
+    <sensor name="cam_up" type="camera" >
+      <pose>0.1 0 0.5 0 -0.6707 0</pose>
+      <camera>
+        <horizontal_fov>1.5</horizontal_fov>
+        <image>
+          <width>1000</width>
+          <height>750</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>1000</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <plugin name="camera_controller_up" filename="libgazebo_ros_camera.so">
+        <always_on>true</always_on>
+        <update_rate>30</update_rate>
+        <cameraName>webcam_up</cameraName>
+        <imageTopicName>image_raw_up</imageTopicName>
+        <cameraInfoTopicName>camera_info_up</cameraInfoTopicName>
+        <frameName>camera_link_up</frameName>
+      </plugin>
+    </sensor>
+    </link>
+
+
+    <link name="cam_link_down">
+      <pose>0 0 -0.02 0 0 0 </pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <iyy>0.001</iyy>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <!-- <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.005</radius>
+              <length>.018</length>
+            </cylinder>
+          </geometry>
+        </collision> -->
+      <visual name='cam_link_down'>
+    	<pose>0.1 0 0.5 0 1.3828 0</pose>
+    	<geometry>
+    		<cylinder>
+    			<radius>.005</radius>
+    			<length>.018</length>
+    		</cylinder>
+    	</geometry>
+    </visual>
+    <sensor name="cam_down" type="camera" >
+      <pose>0.1 0 0.5 0 -0.1879 0</pose>
+      <camera>
+        <horizontal_fov>1.5</horizontal_fov>
+        <image>
+          <width>1000</width>
+          <height>750</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>1000</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <plugin name="camera_controller_down" filename="libgazebo_ros_camera.so">
+        <always_on>true</always_on>
+        <update_rate>30</update_rate>
+        <cameraName>webcam_down</cameraName>
+        <imageTopicName>image_raw_down</imageTopicName>
+        <cameraInfoTopicName>camera_info_down</cameraInfoTopicName>
+        <frameName>camera_link_down</frameName>
+      </plugin>
+    </sensor>
+    </link>
+
+
+
+    <!-- ALL CAMERA JOINTS-->
+
+    <joint name="camera_mount_front" type="fixed">
+      <child>cam_link_front</child>
+      <parent>iris::base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <upper>0</upper>
+          <lower>0</lower>
+        </limit>
+      </axis>
+    </joint>
+   
+
+   
+
+    <joint name="camera_mount_right_front" type="fixed">
+      <child>cam_link_right_front</child>
       <parent>iris::base_link</parent>
       <axis>
         <xyz>0 0 1</xyz>
@@ -70,6 +307,41 @@
       </axis>
     </joint>
 
+    <joint name="camera_mount_left_front" type="fixed">
+      <child>cam_link_left_front</child>
+      <parent>iris::base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <upper>0</upper>
+          <lower>0</lower>
+        </limit>
+      </axis>
+    </joint>
+
+    <joint name="camera_mount_up" type="fixed">
+      <child>cam_link_up</child>
+      <parent>iris::base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <upper>0</upper>
+          <lower>0</lower>
+        </limit>
+      </axis>
+    </joint>
+    
+    <joint name="camera_mount_down" type="fixed">
+      <child>cam_link_down</child>
+      <parent>iris::base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <upper>0</upper>
+          <lower>0</lower>
+        </limit>
+      </axis>
+    </joint>
  
 
     <!-- plugins -->
